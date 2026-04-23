@@ -16,7 +16,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link active" href="{{ route('borrowers.index') }}">Borrowers</a></li>
                 </ul>
-                <form method="POST" action="{{ route('logout') }}">@csrf<button class="btn btn-sm btn-outline-danger">Logout</button></form>
+                {{-- <form method="POST" action="{{ route('logout') }}">@csrf<button class="btn btn-sm btn-outline-danger">Logout</button></form> --}}
             </div>
         </div>
     </nav>
