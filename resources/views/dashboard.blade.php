@@ -22,8 +22,11 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('borrowers.index') }}">Borrowers</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <span class="text-light me-3 small">Admin: {{ Auth::user()->name ?? 'Guest' }}</span>
-                    <form method="POST" action="{{ route('logout') }}">
+                    @auth
+                    <span class="text-light me-3 small">Admin: {{ Auth::user()->name }}</span>
+                    @endauth
+                    {{-- <form method="POST" action="{{ route('logout') }}"> --}}
+
                         @csrf
                         <button type="submit" class="btn btn-sm btn-outline-danger">Logout</button>
                     </form>
