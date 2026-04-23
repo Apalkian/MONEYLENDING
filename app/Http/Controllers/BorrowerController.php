@@ -18,7 +18,10 @@ class BorrowerController extends Controller
         'first_name' => 'required',
         'last_name' => 'required',
         'contact_number' => 'required',
+
     ]);
+
+        $adminID = 1;
 
         Borrower::create([
         'first_name' => $request->first_name,
@@ -27,7 +30,7 @@ class BorrowerController extends Controller
         'contact_number' => $request->contact_number,
         'address' => $request->address,
         'date_registered' => now(),
-        'admin_id' => Auth::id(),
+        'admin_id' => $adminID,
     ]);
 
     return back()->with('success', 'Borrower added!');

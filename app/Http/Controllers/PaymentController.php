@@ -13,13 +13,15 @@ class PaymentController extends Controller {
             // PDF Page 3 Logic: (Current + Interest) - Payment
             $newBalance = ($loan->outstanding_balance + $interest) - $request->amount_paid;
 
+            $adminID = 1; // Placeholder for admin ID, replace with Auth::id() in production
+
             Payment::create([
                 'loan_id' => $loan->id,
                 'payment_date' => now(),
                 'amount_paid' => $request->amount_paid,
                 'interest_added' => $interest,
                 'new_balance' => max(0, $newBalance),
-                'admin_id' => Auth::id(),
+                'admin_id' => $adminID,
             ]);
 
             $loan->update([

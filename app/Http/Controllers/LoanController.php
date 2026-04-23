@@ -23,6 +23,7 @@ class LoanController extends Controller {
     }
 
     public function store(Request $request) {
+        $adminID = 1; // Placeholder for admin ID, replace with Auth::id() in production
         Loan::create([
             'borrower_id' => $request->borrower_id,
             'principle_amount' => $request->amount,
@@ -30,7 +31,7 @@ class LoanController extends Controller {
             'release_date' => $request->release_date,
             'due_date' => $request->due_date,
             'outstanding_balance' => $request->amount,
-            'admin_id' => Auth::id(),
+            'admin_id' => $adminID,
         ]);
         return back()->with('success', 'Loan released!');
     }
