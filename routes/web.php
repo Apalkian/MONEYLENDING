@@ -15,18 +15,17 @@ Route::get('/', function () {
 });
 
 // Route::middleware(['auth'])->group(function () {
-    // Dashboard (Figure 19 & 20)
-    Route::get('/dashboard', [LoanController::class, 'index'])->name('dashboard');
+// Dashboard (Figure 19 & 20)
+Route::get('/dashboard', [LoanController::class, 'index'])->name('dashboard');
 
-    // Borrower Management (Figure 19)
-    Route::get('/borrowers', [BorrowerController::class, 'index'])->name('borrowers.index');
-    Route::post('/borrowers', [BorrowerController::class, 'store'])->name('borrowers.store');
 
-    // Loan Operations (Figure 20)
-    Route::post('/loans', [LoanController::class, 'store'])->name('loans.store');
+Route::resource('borrowers', BorrowerController::class);
 
-    // Payment Tracking (Page 3 Logic)
-    Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
+// Loan Operations (Figure 20)
+Route::post('/loans', [LoanController::class, 'store'])->name('loans.store');
+
+// Payment Tracking (Page 3 Logic)
+Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
 // });
-
+Route::post('/loans/{loan}/add-capital', [LoanController::class, 'addCapital'])->name('loans.addCapital');
 // require __DIR__.'/auth.php';

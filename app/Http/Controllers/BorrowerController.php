@@ -34,5 +34,31 @@ class BorrowerController extends Controller
     ]);
 
     return back()->with('success', 'Borrower added!');
+
+
 }
+
+ public function update(Request $request, Borrower $borrower)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'contact_number' => 'required',
+        ]);
+
+        // Updates the borrower with all the new data from the edit modal
+        $borrower->update($request->all());
+
+        return back()->with('success', 'Borrower updated successfully!');
+    }
+
+    // --- ADD THIS FOR THE DELETE MODAL ---
+    public function destroy(Borrower $borrower)
+    {
+        // This deletes the borrower from the database
+        $borrower->delete();
+
+        return back()->with('success', 'Borrower deleted successfully!');
+    }
 }
+
